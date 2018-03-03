@@ -1,10 +1,10 @@
-#YelpCamp
+#Groups
 
 ##Initial Setup
 * Add Landing Page
-* Add Campgrounds Page that lists all campgrounds
+* Add Groups Page that lists all groups
 
-Each Campground has:
+Each Groups has:
    * Name
    * Image
 
@@ -12,21 +12,21 @@ Each Campground has:
 * Create our header and footer partials
 * Add in Bootstrap
 
-#Creating New Campgrounds
-* Setup new campground POST route
+#Creating New Group
+* Setup new group POST route
 * Add in body-parser
 * Setup route to show form
 * Add basic unstyled form
 
-#Style the campgrounds page
+#Style the group page
 * Add a better header/title
-* Make campgrounds display in a grid
+* Make group display in a grid
 
 #Style the Navbar and Form
 * Add a navbar to all templates
-* Style the new campground form
+* Style the new group form
 
 #Add Mongoose
 * Install and configure mongoose
-* Setup campground model
-* Use campground model inside of our routes!
+* Setup group model
+* Use group model inside of our routes!

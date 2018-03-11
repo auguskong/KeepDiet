@@ -2,10 +2,10 @@
  <div class="container">
      <header class="jumbotron">
          <div class="container">
-             <h1>Welcome To Groups!</h1>
+             <h1>Welcome To KeepDiet!</h1>
              <p>View our hand-picked groups from all over the world</p>
              <p>
-                <a class="btn btn-primary btn-large" href="/groups/new">Add New Groups</a>
+                <a class="btn btn-primary btn-large" href="/groups/new">Create a New Group</a>
              </p>
          </div>
      </header>
@@ -17,6 +17,7 @@
                    <img src="<%= group.image %>">
                    <div class="caption">
                        <h4><%= group.name %></h4>
+                       <a class="btn btn-primary btn-small" href="/groups/desc">Join</a>
                    </div>
                 </div>
             </div>

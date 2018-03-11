@@ -1,6 +1,7 @@
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
+var moment = require("moment");
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
@@ -19,6 +20,15 @@ app.get("/", function(req, res){
     res.render("landing");
 });
 
+app.get("/diary", function(req, res){
+    // res.render("../Diary/diary.ejs"); 
+    res.render("diary"); 
+});
+
+exports.index= function(req, res) {
+    res.render("diary", {moment: moment});
+}
+
 app.get("/groups", function(req, res){
     res.render("groups",{groups:groups});
 });
@@ -35,6 +45,14 @@ app.post("/groups", function(req, res){
 
 app.get("/groups/new", function(req, res){
    res.render("new.ejs"); 
+});
+
+app.get("/diary/new", function(req, res){
+    res.render("newDiary.ejs");
+});
+
+app.get("/groups/desc", function(req, res){
+    res.render("groupDescription.ejs");
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){

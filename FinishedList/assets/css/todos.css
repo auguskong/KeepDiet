@@ -83,3 +83,35 @@ input:focus{
 	color: gray;
 	text-decoration: line-through;
 }
+
+.entry, .total-cals, .headers, .archive, .result {
+	margin: 0 10px;
+	font-size: 12px;
+	display: flex;
+	align-items: center;
+}
+
+.entry, .headers, .result {
+	min-height: 40px;
+	padding: 5 15px;
+}
+
+.time-col, .name-col, .cals-col,.details-col {
+	position: absolute;
+}
+
+.time-col{
+	left: 5%;
+	width: 60%;
+	max-width: 60%;
+	overflow-x:hidden; 
+}
+.name-col {
+	left: 25%;
+	max-width: 40%;
+	overflow: hidden;
+}
+.cals-col {
+	left: 72%;
+	text-align: right;
+}

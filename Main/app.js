@@ -17,20 +17,19 @@ var groups = [
 ];
     
 app.get("/", function(req, res){
-    res.render("landing");
+    res.render("Landing/landing");
 });
 
-app.get("/diary", function(req, res){
-    // res.render("../Diary/diary.ejs"); 
-    res.render("diary"); 
+app.get("/diary", function(req, res){ 
+    res.render("Diary/diary"); 
 });
 
 exports.index= function(req, res) {
-    res.render("diary", {moment: moment});
+    res.render("Diary/diary", {moment: moment});
 }
 
 app.get("/groups", function(req, res){
-    res.render("groups",{groups:groups});
+    res.render("Groups/groups",{groups:groups});
 });
 
 app.post("/groups", function(req, res){
@@ -44,15 +43,15 @@ app.post("/groups", function(req, res){
 });
 
 app.get("/groups/new", function(req, res){
-   res.render("new.ejs"); 
+   res.render("Groups/new.ejs"); 
 });
 
 app.get("/diary/new", function(req, res){
-    res.render("newDiary.ejs");
+    res.render("Diary/newDiary.ejs");
 });
 
 app.get("/groups/desc", function(req, res){
-    res.render("groupDescription.ejs");
+    res.render("Groups/groupDescription.ejs");
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){

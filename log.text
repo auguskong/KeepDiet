@@ -1,0 +1,10 @@
+error1: TypeError: Cannot read property 'push' of undefined
+debug: comment -> comments, comments is an array of objects
+
+error2: Cannot GET /groups/5ab714fbe099d13ed5ab0c97
+debug: do not define the show route in app.js
+
+error3: Failed to lookup view "show" in views directory
+
+error4: Cast to ObjectId failed for value "todos.css" at path "_id" for model "Group"
+

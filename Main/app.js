@@ -87,9 +87,19 @@ app.get("/diary/new", function(req, res){
     res.render("Diary/newDiary.ejs");
 });
 
-app.get("/groups/desc", function(req, res){
-    res.render("Groups/groupDescription.ejs");
-});
+//Show more info about one group
+app.get("/groups/:id", function(req, res){
+    //find the group with provided ID
+    Group.findById(req.params.id).exec(function(err, foundGroup){
+        if(err){
+            console.log(err);
+        } else {
+            console.log(foundGroup)
+            res.render("Groups/show", {group: foundGroup});
+        }
+    });
+})
+
 //===========
 //AUTH ROUTES
 //===========

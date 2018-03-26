@@ -67,7 +67,8 @@ app.post("/groups", function(req, res){
     // get data from form and add to groups array
     var name = req.body.name;
     var image = req.body.image;
-    var newGroup = {name: name, image: image}
+    var desc = req.body.desc;
+    var newGroup = {name: name, image: image, description: desc}
     //Create a new group and save to DB
     Group.create(newGroup, function(err, newlyCreated){
         if(err){

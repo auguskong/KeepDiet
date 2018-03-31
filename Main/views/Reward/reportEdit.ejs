@@ -1,145 +1,72 @@
+<%include ../partials/header %>
+<script>
+    function addBreakfast() {
+        var ul = document.getElementById("breakfastList");
+        var li = document.createElement("li");
+        var x = document.createElement("INPUT");
+        x.style.width = '350px';
+        li.appendChild(document.body.appendChild(x))
+        ul.appendChild(li);
+    }
+    function addLunch() {
+        var ul = document.getElementById("lunchList");
+        var li = document.createElement("li");
+        var x = document.createElement("INPUT");
+        x.style.width = '350px';
+        li.appendChild(document.body.appendChild(x))
+        ul.appendChild(li);
+    }
+    function addDinner() {
+        var ul = document.getElementById("dinnerList");
+        var li = document.createElement("li");
+        var x = document.createElement("INPUT");
+        x.style.width = '350px';
+        li.appendChild(document.body.appendChild(x))
+        ul.appendChild(li);
+    }
+    function addExercises() {
+        var ul = document.getElementById("exerciseList");
+        var li = document.createElement("li");
+        var x = document.createElement("INPUT");
+        x.style.width = '350px';
+        li.appendChild(document.body.appendChild(x))
+        ul.appendChild(li);
+    }
+</script>
 
+<div style="margin: 25px auto; padding:1px 16px; height: 1000px;">
+    <h1 style="text-align: center">Edit Diary Entry</h1>
+    <div style="width: 50%; margin: 25px auto;">
+            <form action="/reportprogress/edit" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="date" value="<%= diary.date %>">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="checkin" value="<%= diary.checkin %>">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="checkout" value="<%= diary.checkout %>">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="breakfast" value="<%= diary.breakfast %>">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="lunch" value="<%= diary.lunch %>">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="dinner" value="<%= diary.dinner %>">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="snack" value="<%= diary.snack %>">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="exercise" value="<%= diary.exercise %>">
+                    </div>
+             
+                <button>Update</button>
+            </form>
+        <a href="/reportprogress">Cancel</a>
+    </div>
+</div>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>KeepDiet</title>
-        <!-- Bootstrap CSS CDN -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <!-- Our Custom CSS -->
-        <link rel="stylesheet" href="/partials/style.css">
-        <!-- Scrollbar Custom CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-    </head>
-    <body>
-        <div class="wrapper">
-            <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3>KeepDiet</h3>
-                </div>
-                <ul class="list-unstyled components">
-                    <p>Dummy Heading</p>
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    <li>
-                        <a href="/groups">Groups</a>
-                    </li>
-                    <li class="active">
-                        <a href="#rewardSubmenu" data-toggle="collapse" aria-expanded="false">Reward</a>
-                        <ul class="collapse list-unstyled" id="rewardSubmenu">
-                            <li><a href="/reward">Home</a></li>
-                            <li><a href="/reportprogress">Report Progress</a></li>
-                            <li><a href="/groupprogress">Group Progress</a></li>
-                            <li><a href="/deposit">Deposits</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-            <div id="content">
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="loginBar">
-                            <ul class="nav navbar-nav navbar-right">
-                                <% if(!currentUser){ %>
-                                <li><a href="/login">Login</a></li>
-                                <li><a href="/register">Sign Up</a></li>
-                                <% } else { %>
-                                <li><a href="#">Signed As <%= currentUser.username %></a></li>
-                                <li><a href="/logout">Logout</a></li>
-                                <% } %>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <div style="margin: 25px auto; padding:1px 16px; height: 1000px;">
-                    <h1 style="text-align: center">Edit Diary Entry</h1>
-                    <div style="width: 50%; margin: 25px auto;">
-                            <form action="/reportprogress/edit" method="POST">
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" name="date" value="<%= diary.date %>">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" name="checkin" value="<%= diary.checkin %>">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" name="checkout" value="<%= diary.checkout %>">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" name="breakfast" value="<%= diary.breakfast %>">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" name="lunch" value="<%= diary.lunch %>">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" name="dinner" value="<%= diary.dinner %>">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" name="snack" value="<%= diary.snack %>">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" name="exercise" value="<%= diary.exercise %>">
-                                    </div>
-                                
-                                <!--<h4>Breakfast</h4>-->
-                                <!--<ul id="breakfastList"></ul>-->
-                                <!--<button class="btn btn-link" onclick="addBreakfast()">+Add</button>-->
-                                <!--<h4>Lunch</h4>-->
-                                <!--<ul id="lunchList"></ul>-->
-                                <!--<button class="btn btn-link" onclick="addLunch()">+Add</button>-->
-                                <!--<h4>Dinner</h4>-->
-                                <!--<ul id="dinnerList"></ul>-->
-                                <!--<button class="btn btn-link" onclick="addDinner()">+Add</button>-->
-                                <!--<h4>Exercises</h4>-->
-                                <!--<ul id="exerciseList"></ul>-->
-                                <!--<button class="btn btn-link" onclick="addExercises()">+Add</button>-->
-                                <!--<div class="form-group">-->
-                                <!--    <button class="btn btn-lg btn-primary btn-block" href="/reportprogress">Submit</button>-->
-                                <!--</div>-->
-                                <button>Update</button>
-                            </form>
-                        <a href="/reportprogress">Cancel</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <script>
-            function addBreakfast() {
-                var ul = document.getElementById("breakfastList");
-                var li = document.createElement("li");
-                var x = document.createElement("INPUT");
-                x.style.width = '350px';
-                li.appendChild(document.body.appendChild(x))
-                ul.appendChild(li);
-            }
-            function addLunch() {
-                var ul = document.getElementById("lunchList");
-                var li = document.createElement("li");
-                var x = document.createElement("INPUT");
-                x.style.width = '350px';
-                li.appendChild(document.body.appendChild(x))
-                ul.appendChild(li);
-            }
-            function addDinner() {
-                var ul = document.getElementById("dinnerList");
-                var li = document.createElement("li");
-                var x = document.createElement("INPUT");
-                x.style.width = '350px';
-                li.appendChild(document.body.appendChild(x))
-                ul.appendChild(li);
-            }
-            function addExercises() {
-                var ul = document.getElementById("exerciseList");
-                var li = document.createElement("li");
-                var x = document.createElement("INPUT");
-                x.style.width = '350px';
-                li.appendChild(document.body.appendChild(x))
-                ul.appendChild(li);
-            }
-        </script>
-    </body>
-</html>
+<include ../partials/footer %>

@@ -138,7 +138,7 @@ app.get("/reward", isLoggedIn, function(req, res){
 });
 
 // show all diaries
-app.get("/reportprogress", function(req, res){
+app.get("/reward/reportprogress", function(req, res){
     // get all diaries from db
     Diary.find({}, function(err, diaries) {
         if(err) {
@@ -149,7 +149,7 @@ app.get("/reportprogress", function(req, res){
     })
 });
 
-app.post("/reportprogress/new", function(req, res) {
+app.post("/reward/reportprogress/new", function(req, res) {
    // get data from form and add to diary array
    var date = req.body.date;
    var checkin = req.body.checkin;
@@ -166,17 +166,17 @@ app.post("/reportprogress/new", function(req, res) {
        if(err){
            console.log(err);
        } else {
-           res.redirect("/reportprogress");
+           res.redirect("/reward/reportprogress");
        }
    });
    
 });
 
-app.get("/reportprogress/new", function(req, res){
+app.get("/reward/reportprogress/new", function(req, res){
     res.render("Reward/reportNew.ejs");
 });
 
-app.put("/reportprogress/edit", function(req, res) {
+app.put("/reward/reportprogress/edit", function(req, res) {
    var date = req.body.date;
    var checkin = req.body.checkin;
    var checkout = req.body.checkout;
@@ -188,7 +188,7 @@ app.put("/reportprogress/edit", function(req, res) {
    var updateDiary = {date: date, checkin: checkin, checkout: checkout, breakfast: breakfast, lunch: lunch, dinner: dinner, snack: snack, exercise: exercise}
 });
 
-app.get("/reportprogress/edit/:id", function(req, res){
+app.get("/reward/reportprogress/edit/:id", function(req, res){
     // get all diaries from db
     Diary.findById(req.params.id).exec(function(err, diaries) {
         if(err) {
@@ -203,7 +203,7 @@ app.get("/groupprogress", function(req, res){
     res.render("Reward/groupprogress.ejs");
 });
 
-app.get("/deposit", function(req, res){
+app.get("/reward/deposit", function(req, res){
     res.render("Reward/deposit.ejs");
 });
 

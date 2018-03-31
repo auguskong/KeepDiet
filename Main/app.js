@@ -6,7 +6,8 @@ var express         = require("express"),
     LocalStrategy   = require("passport-local"),
     Group           = require("./models/group"),
     User            = require("./models/user"),
-    Diary           = require("./models/diary")
+    Diary           = require("./models/diary"),
+    $               = require('jquery'),
     moment          = require("moment");
 
 mongoose.connect("mongodb://localhost/keep_diet_2");
@@ -33,13 +34,16 @@ app.use(function(req, res, next){
     next();
 })
 
+// var groups = [
+//         {name: "Hiking Groups", image: "https://static1.squarespace.com/static/53bed66ee4b0fc5deee88551/t/56b7c428555986e5db03075a/1454883907809/trail-hiking-mountain-group"},
+//         {name: "Cycling Groups", image: "http://www.lsu.edu/highlights/2010/07/images/CyclingClub2.jpg"},
+//         {name: "Swimming Groups", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8tTH5bJQYWSqgoClrXIH-8QRuBbswnOH4lycbLbMmaynoHZY3GA"},
+//         {name: "Boxing Groups", image: "http://harlemboxing.nyc/wp-content/uploads/2014/07/Group_sm1.jpeg"},
+//         {name: "Basketball Groups", image: "http://www.loganleisurecentres.com.au/__data/assets/image/0011/439967/Jazz-Team-Training-8-16-Cornubia-Park.jpg"}
+// ];
     
 app.get("/", function(req, res){
     res.render("Landing/landing");
-});
-
-app.get("/diary", function(req, res){ 
-    res.render("Diary/diary"); 
 });
 
 //INDEX - show all groups
@@ -56,14 +60,28 @@ app.get("/groups", function(req, res){
 
 app.post("/campgrounds", function(req, res){
     // get data from form and add to groups array
-
+    // var name = req.body.name;
+    // var target = req.body.target;
+    // var start = req.body.start;
+    // var end = req.body.end;
+    // var max = req.body.max;
+    
+    // var newGroup = {name: name, target: target, start: start, end: end, max: max}
+    // //Create a new group and save to DB
+    // Group.create(newGroup, function(err, newlyCreated){
+    //     if(err){
+    //         console.log(err);
+    //     } else {
+    //         res.redirect("/groups");
+    //     }
+    // });
     var name = req.body.name;
-
     var image = req.body.image;
-    var desc = req.body.desc;
-    var newGroup = {name: name, image: image, description: desc}
-
-
+    var target = req.body.target;
+    var start = req.body.start;
+    var end = req.body.end;
+    var max = req.body.max;
+    var newGroup = {name: name, image: image, target: target, start: start, end: end, max: max}
     Group.create(newGroup, function(err, newlyCreated){
         if(err){
             console.log(err);
@@ -90,7 +108,9 @@ app.get("/groups/:id", function(req, res){
     });
 });
 
-
+app.get("/groups/desc", function(req, res){
+    res.render("Groups/groupDescription.ejs");
+});
 
 //===========
 //AUTH ROUTES

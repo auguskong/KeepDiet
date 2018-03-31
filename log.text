@@ -7,4 +7,3 @@ debug: do not define the show route in app.js
 error3: Failed to lookup view "show" in views directory
 
 error4: Cast to ObjectId failed for value "todos.css" at path "_id" for model "Group"
-

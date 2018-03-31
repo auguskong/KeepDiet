@@ -1,0 +1,104 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>KeepDiet</title>
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="/partials/style.css">
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h3>KeepDiet</h3>
+                </div>
+                <ul class="list-unstyled components">
+                    <p>Dummy Heading</p>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/groups">Groups</a>
+                    </li>
+                    <li class="active">
+                        <a href="/reward" data-toggle="collapse" aria-expanded="false">Reward</a>
+                        <ul class="collapse list-unstyled" id="rewardSubmenu">
+                            <li><a href="/reward">Home</a></li>
+                            <li><a href="/reportprogress">Report Progress</a></li>
+                            <li><a href="/groupprogress">Group Progress</a></li>
+                            <li><a href="/deposit">Deposits</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div id="content">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="loginBar">
+                            <ul class="nav navbar-nav navbar-right">
+                                <% if(!currentUser){ %>
+                                <li><a href="/login">Login</a></li>
+                                <li><a href="/register">Sign Up</a></li>
+                                <% } else { %>
+                                <li><a href="#">Signed As <%= currentUser.username %></a></li>
+                                <li><a href="/logout">Logout</a></li>
+                                <% } %>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <div style="margin: 25px auto; padding:1px 16px; height: 1000px;">
+                   <h1 style="text-align: center">Group Progress</h1>
+                   <div margin: "25px auto;">
+                       <table border="3" cellspacing="10" align="center">
+                           <tr>
+                               <th class="text-center" width="100">Member</th>
+                               <th class="text-center" width="100">Orignial weight (lbs)</th>
+                               <th class="text-center" width="100">Current weight (lbs)</th>
+                               <th class="text-center" width="100">Diaries</th>
+                           </tr>
+                           <tr class="text-center">
+                               <td>Tony Kim</td>
+                               <td>200</td>
+                               <td>180</td>
+                               <td><a href="">view</a></td>
+                           </tr>
+                          <tr class="text-center">
+                               <td>Haoting Li</td>
+                               <td>190</td>
+                               <td>200</td>
+                               <td><a href="">view</a></td>
+                           </tr>
+                           <tr class="text-center">
+                               <td>Junlin Liu</td>
+                               <td>170</td>
+                               <td>175</td>
+                               <td><a href="">view</a></td>
+                           </tr>
+                           <tr class="text-center">
+                               <td>Wanyang Guo</td>
+                               <td>190</td>
+                               <td>165</td>
+                               <td><a href="">view</a></td>
+                           </tr>
+                            <tr class="text-center">
+                               <td>Xiangyu Kong</td>
+                               <td>170</td>
+                               <td>148</td>
+                               <td><a href="">view</a></td>
+                           </tr>
+                       </table>
+                   </div>
+               </div>
+            </div>
+        </div>
+    </body>
+</html>

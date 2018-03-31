@@ -1,0 +1,102 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>KeepDiet</title>
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="/partials/style.css">
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h3>KeepDiet</h3>
+                </div>
+                <ul class="list-unstyled components">
+                    <p>Dummy Heading</p>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/groups">Groups</a>
+                    </li>
+                    <li class="active">
+                        <a href="/reward" data-toggle="collapse" aria-expanded="false">Reward</a>
+                        <ul class="collapse list-unstyled" id="rewardSubmenu">
+                            <li><a href="/reward">Home</a></li>
+                            <li><a href="/reportprogress">Report Progress</a></li>
+                            <li><a href="/groupprogress">Group Progress</a></li>
+                            <li><a href="/deposit">Deposits</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div id="content">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="loginBar">
+                            <ul class="nav navbar-nav navbar-right">
+                                <% if(!currentUser){ %>
+                                <li><a href="/login">Login</a></li>
+                                <li><a href="/register">Sign Up</a></li>
+                                <% } else { %>
+                                <li><a href="#">Signed As <%= currentUser.username %></a></li>
+                                <li><a href="/logout">Logout</a></li>
+                                <% } %>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <div style="margin: 25px auto; padding:1px 16px; height: 1000px;">
+                   <h1 style="text-align: center">Diary Entries</h1>
+                   <!--<h1 style="text-align: center">Xiangyu's Diary Entries</h1>-->
+                   <div margin: "25px auto;">
+            			<table border="3" cellspacing="10" align="center">
+            				<tr>
+            					<th class="text-center" width="100">Date</th>
+            					<th class="text-center" width="100">Check-in (lbs)</th>
+            					<th class="text-center" width="100">Check-out (lbs)</th>
+            					<th class="text-center" width="100">Breakfast</th>
+            					<th class="text-center" width="100">Lunch</th>
+            					<th class="text-center" width="100">Dinner</th>
+            					<th class="text-center" width="100">Snack</th>
+            					<th class="text-center" width="100">Exercise</th>
+            					<th class="text-center" width="100">Edit</th>
+            				</tr>
+            				<% diaries.forEach(function(diary){ %>
+            			    <tr class="text-center">
+            				        <td><%= diary.date %></td>
+            				        <td><%= diary.checkin %></td>
+            				        <td><%= diary.checkout %></td>
+            				        <td><%= diary.breakfast %></td>
+            				        <td><%= diary.lunch %></td>
+            				        <td><%= diary.dinner %></td>
+            				        <td><%= diary.snack %></td>
+            				        <td><%= diary.exercise %></td>
+            				        <td><a class="btn btn-primary btn-small" href="reportprogress/edit">Edit</a></td>
+            			    </tr>
+            				<% }); %>
+            				<!--<tr class="text-center">-->
+            				<!--	<td>3/18/2018 Sunday</td>-->
+            				<!--	<td>143.3</td>-->
+            				<!--	<td>view</td>-->
+            				<!--	<td>view</td>-->
+            				<!--	<td>142.2</td>-->
+            				<!--	<td><a class="btn btn-primary btn-small" href="reportprogress/edit">Edit</a></td>-->
+            				<!--</tr>-->
+            			</table>
+            			<a class="btn btn-primary btn-large" href="/reportprogress/new">Add New Entry</a>
+            		</div>
+               </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -27,7 +27,7 @@
                         <a href="/groups">Groups</a>
                     </li>
                     <li>
-                        <a href="/reward" data-toggle="collapse" aria-expanded="false">Reward</a>
+                        <a href="#rewardSubmenu" data-toggle="collapse" aria-expanded="false">Reward</a>
                         <ul class="collapse list-unstyled" id="rewardSubmenu">
                             <li><a href="/reward">Home</a></li>
                             <li><a href="/reportprogress">Report Progress</a></li>
@@ -55,10 +55,10 @@
                 </nav>
                 <h1><%=group.name%></h1>
                 <img src="<%= group.image %>">
-                <p><%= group.target %>></p>
-                <p><%= group.start %>></p>
-                <p><%= group.end %>></p>
-                <p><%= group.max %>></p>
+                <p><%= group.target %></p>
+                <p><%= group.start %></p>
+                <p><%= group.end %></p>
+                <p><%= group.max %></p>
             </div>
         </div>
         <!-- jQuery CDN -->

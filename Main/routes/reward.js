@@ -1,6 +1,7 @@
-var express = require("express"),
-    router  = express.Router(),
-    Diary   = require("../models/diary");
+var express     = require("express"),
+    router      = express.Router(),
+    ObjectID    = require('mongodb').ObjectID,
+    Diary       = require("../models/diary");
 
 
 router.get("/reward", isLoggedIn, function(req, res){
@@ -57,6 +58,16 @@ router.put("/reward/reportprogress/edit", function(req, res) {
    var snack = req.body.snack;
    var exercise = req.body.exercise;
    var updateDiary = {date: date, checkin: checkin, checkout: checkout, breakfast: breakfast, lunch: lunch, dinner: dinner, snack: snack, exercise: exercise}
+});
+
+router.post("/reward/reportprogress/update/:id", function(req, res) {
+   Diary.update({"_id": ObjectID(req.params.id)}, {$set:{"date": req.body.date, "checkin" : req.body.checkin, "checkout": req.body.checkout, "breakfast": req.body.breakfast, "lunch": req.body.lunch, "dinner": req.body.dinner, "snack": req.body.snack, "exercise": req.body.exercise}}, function(err, doc) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect("/reward/reportprogress");
+        }
+   });
 });
 
 router.get("/reward/reportprogress/edit/:id", function(req, res){

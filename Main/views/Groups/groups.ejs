@@ -63,48 +63,6 @@
                         </p>
                     </div>
                 </header>
-                <div class="row text-center" style="display:flex; flex-wrap: wrap;">
-                    <div class="container">
-                        <div class="row">
-                            <h1 style="text-align: center">Running Groups</h1>
-                            <div margin: "25px auto;">
-                                <table border="3" cellspacing="10" align="center">
-    				                <tr>
-                    					<th class="text-center" width="100">Name</th>
-                    					<th class="text-center" width="100">Target</th>
-                    					<th class="text-center" width="100">Start</th>
-                    					<th class="text-center" width="100">End</th>
-                    					<th class="text-center" width="100">Max Members</th>
-                    					<th class="text-center" width="100">Join</th>
-    				                </tr>
-                    				<% groups.forEach(function(group){ %>
-                    				<tr class="text-center">
-                    				    <td><%= group.name %></td>
-                    				    <td><%= group.target %></td>
-                    				    <td><%= group.start %></td>
-                    				    <td><%= group.end %></td>
-                    				    <td><%= group.max %></td>
-                    				    <td><a class="btn btn-primary btn-small">Join</a></td>
-                    				</tr>
-                    				<% }); %>
-    			                </table>
-                            </div>
-                        </div>
-                    </div>
-||||||| merged common ancestors
-<% include ../partials/header %>
-
- <div class="container">
-     <header class="jumbotron">
-         <div class="container">
-             <h1>Welcome To KeepDiet!</h1>
-             <p>View our hand-picked groups from all over the world</p>
-             <p>
-                <a class="btn btn-primary btn-large" href="/groups/new">Create a New Group</a>
-             </p>
-         </div>
-     </header>
-     
      <div class="row text-center" style="display:flex; flex-wrap: wrap;">
         <% groups.forEach(function(group){ %>
             <div class="col-md-3 col-sm-6">
@@ -112,7 +70,7 @@
                    <img src="<%= group.image %>">
                    <div class="caption">
                        <h4><%= group.name %></h4>
-                       <a class="btn btn-primary btn-small" href="/groups/desc">Join</a>
+                       <a class="btn btn-primary btn-small" href="/groups/<%= group._id %>">More Info</a>
                    </div>
                 </div>
             </div>

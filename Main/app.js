@@ -67,19 +67,44 @@ app.get("/groups", function(req, res){
 
 app.post("/campgrounds", function(req, res){
     // get data from form and add to groups array
-    var name = req.body.name;
-    var target = req.body.target;
-    var start = req.body.start;
-    var end = req.body.end;
-    var max = req.body.max;
+    // var name = req.body.name;
+    // var target = req.body.target;
+    // var start = req.body.start;
+    // var end = req.body.end;
+    // var max = req.body.max;
     
-    var newGroup = {name: name, target: target, start: start, end: end, max: max}
-    //Create a new group and save to DB
+    // var newGroup = {name: name, target: target, start: start, end: end, max: max}
+    // //Create a new group and save to DB
+    // Group.create(newGroup, function(err, newlyCreated){
+    //     if(err){
+    //         console.log(err);
+    //     } else {
+    //         res.redirect("/groups");
+    //     }
+    // });
+    var name = req.body.name;
+    var image = req.body.image;
+    var desc = req.body.desc;
+    var newGroup = {name: name, image: image, description: desc}
     Group.create(newGroup, function(err, newlyCreated){
         if(err){
             console.log(err);
         } else {
             res.redirect("/groups");
+        }
+    });
+});
+
+// Comment this out to "Create a new group", then uncomment this out to be able to view the Group info
+//Show more info about one group
+app.get("/groups/:id", function(req, res){
+    //find the group with provided ID
+    Group.findById(req.params.id).exec(function(err, foundGroup){
+        if(err){
+            console.log(err);
+        } else {
+            console.log(foundGroup);
+            res.render("Groups/show", {group: foundGroup});
         }
     });
 });

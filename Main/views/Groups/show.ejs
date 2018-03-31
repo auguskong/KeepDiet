@@ -53,28 +53,9 @@
                         </div>
                     </div>
                 </nav>
-                <header class="jumbotron">
-                    <div class="container">
-                        <h1>Welcome To KeepDiet!</h1>
-                        <p>View our hand-picked groups from all over the world</p>
-                        <p>
-                            <a class="btn btn-primary btn-large" href="/groups/new">Create a New Group</a>
-                        </p>
-                    </div>
-                </header>
-                <div class="row text-center" style="display:flex; flex-wrap: wrap;">
-                    <% groups.forEach(function(group){ %>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="thumbnail">
-                                <img src="<%= group.image %>">
-                                <div class="caption">
-                                    <h4><%= group.name %></h4>
-                                    <a href="/groups/<%= group._id %>" class="btn btn-primary btn-small">More Info</a>
-                                </div>
-                            </div>
-                        </div>
-                    <% }); %>    
-                </div>
+                <h1><%=group.name%></h1>
+                <img src="<%= group.image %>">
+                <p><%= group.description %>></p>
             </div>
         </div>
         <!-- jQuery CDN -->

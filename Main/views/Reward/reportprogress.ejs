@@ -81,17 +81,9 @@
             				        <td><%= diary.dinner %></td>
             				        <td><%= diary.snack %></td>
             				        <td><%= diary.exercise %></td>
-            				        <td><a class="btn btn-primary btn-small" href="reportprogress/edit">Edit</a></td>
+            				        <td><a class="btn btn-primary btn-small" href="reportprogress/edit/<%= diary._id %>">Edit</a></td>
             			    </tr>
             				<% }); %>
-            				<!--<tr class="text-center">-->
-            				<!--	<td>3/18/2018 Sunday</td>-->
-            				<!--	<td>143.3</td>-->
-            				<!--	<td>view</td>-->
-            				<!--	<td>view</td>-->
-            				<!--	<td>142.2</td>-->
-            				<!--	<td><a class="btn btn-primary btn-small" href="reportprogress/edit">Edit</a></td>-->
-            				<!--</tr>-->
             			</table>
             			<a class="btn btn-primary btn-large" href="/reportprogress/new">Add New Entry</a>
             		</div>

@@ -58,32 +58,30 @@
                 <div style="margin: 25px auto; padding:1px 16px; height: 1000px;">
                     <h1 style="text-align: center">Edit Diary Entry</h1>
                     <div style="width: 50%; margin: 25px auto;">
-                        <% diaries.forEach(function(diary){ %>
                             <form action="/reportprogress/edit" method="POST">
-                                
                                     <div class="form-group">
-                                        <input class="form-control" type="text" name="date" value=<%= diary.date %>>
+                                        <input class="form-control" type="text" name="date" value="<%= diary.date %>">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" name="checkin" value=<%= diary.checkin %>>
+                                        <input class="form-control" type="text" name="checkin" value="<%= diary.checkin %>">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" name="checkout" value=<%= diary.checkout %>>
+                                        <input class="form-control" type="text" name="checkout" value="<%= diary.checkout %>">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" name="breakfast" value=<%= diary.breakfast %>>
+                                        <input class="form-control" type="text" name="breakfast" value="<%= diary.breakfast %>">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" name="lunch" value=<%= diary.lunch %>>
+                                        <input class="form-control" type="text" name="lunch" value="<%= diary.lunch %>">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" name="dinner" value=<%= diary.dinner %>>
+                                        <input class="form-control" type="text" name="dinner" value="<%= diary.dinner %>">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" name="snack" value=<%= diary.snack %>>
+                                        <input class="form-control" type="text" name="snack" value="<%= diary.snack %>">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" name="exercise" value=<%= diary.exercise %>>
+                                        <input class="form-control" type="text" name="exercise" value="<%= diary.exercise %>">
                                     </div>
                                 
                                 <!--<h4>Breakfast</h4>-->
@@ -103,7 +101,6 @@
                                 <!--</div>-->
                                 <button>Update</button>
                             </form>
-                        <% }); %>
                         <a href="/reportprogress">Cancel</a>
                     </div>
                 </div>

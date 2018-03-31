@@ -216,15 +216,15 @@ app.put("/reportprogress/edit", function(req, res) {
    
 });
 
-app.get("/reportprogress/edit", function(req, res){
+app.get("/reportprogress/edit/:id", function(req, res){
     // get all diaries from db
-    Diary.find({}, function(err, diaries) {
+    Diary.findById(req.params.id).exec(function(err, diaries) {
         if(err) {
             console.log(err);
         } else {
-            res.render("Reward/reportEdit.ejs", {diaries: diaries, currentUser: req.user});
+            res.render("Reward/reportEdit.ejs", {diary: diaries});
         }
-    })  
+    });  
 });
 
 app.get("/groupprogress", function(req, res){

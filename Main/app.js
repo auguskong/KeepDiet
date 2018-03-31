@@ -8,7 +8,8 @@ var express         = require("express"),
     User            = require("./models/user"),
     Diary           = require("./models/diary"),
     $               = require('jquery'),
-    moment          = require("moment");
+    moment          = require("moment"),
+    ObjectID        = require('mongodb').ObjectID;
 
 mongoose.connect("mongodb://localhost/keep_diet_2");
 app.use(bodyParser.urlencoded({extended: true}));
@@ -176,16 +177,14 @@ app.get("/reportprogress/new", function(req, res){
     res.render("Reward/reportNew.ejs");
 });
 
-app.put("/reportprogress/edit", function(req, res) {
-   var date = req.body.date;
-   var checkin = req.body.checkin;
-   var checkout = req.body.checkout;
-   var breakfast = req.body.breakfast;
-   var lunch = req.body.lunch;
-   var dinner = req.body.dinner;
-   var snack = req.body.snack;
-   var exercise = req.body.exercise;
-   var updateDiary = {date: date, checkin: checkin, checkout: checkout, breakfast: breakfast, lunch: lunch, dinner: dinner, snack: snack, exercise: exercise}
+app.post("/reportprogress/update/:id", function(req, res) {
+   Diary.update({"_id": ObjectID(req.params.id)}, {$set:{"date": req.body.date, "checkin" : req.body.checkin, "checkout": req.body.checkout, "breakfast": req.body.breakfast, "lunch": req.body.lunch, "dinner": req.body.dinner, "snack": req.body.snack, "exercise": req.body.exercise}}, function(err, doc) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect("/reportprogress");
+        }
+   });
 });
 
 app.get("/reportprogress/edit/:id", function(req, res){

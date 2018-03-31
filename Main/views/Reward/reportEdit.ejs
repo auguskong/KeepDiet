@@ -58,7 +58,7 @@
                 <div style="margin: 25px auto; padding:1px 16px; height: 1000px;">
                     <h1 style="text-align: center">Edit Diary Entry</h1>
                     <div style="width: 50%; margin: 25px auto;">
-                            <form action="/reportprogress/edit" method="POST">
+                            <form action="/reportprogress/update/<%= diary._id %>" method="POST">
                                     <div class="form-group">
                                         <input class="form-control" type="text" name="date" value="<%= diary.date %>">
                                     </div>
@@ -140,6 +140,26 @@
                 li.appendChild(document.body.appendChild(x))
                 ul.appendChild(li);
             }
+        </script>
+        <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <!-- Bootstrap Js CDN -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar, #content').toggleClass('active');
+                    $('.collapse.in').toggleClass('in');
+                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                });
+            });
         </script>
     </body>
 </html>

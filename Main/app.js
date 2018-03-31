@@ -4,13 +4,15 @@ var express         = require("express"),
     mongoose        = require("mongoose"),
     passport        = require("passport"),
     LocalStrategy   = require("passport-local"),
-    Group           = require("./models/group"),
     User            = require("./models/user"),
-    Diary           = require("./models/diary"),
-    $               = require('jquery'),
-    moment          = require("moment"),
-    ObjectID        = require('mongodb').ObjectID;
 
+    ObjectID        = require('mongodb').ObjectID;
+    $               = require('jquery');
+
+var groupsRoutes    = require("./routes/groups"),
+    indexRoutes     = require("./routes/index"),
+    rewardRoutes    = require("./routes/reward");
+    
 mongoose.connect("mongodb://localhost/keep_diet_2");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/views"));
@@ -29,6 +31,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+<<<<<<< HEAD
 //middleware for passing the currentUser 
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
@@ -205,6 +208,12 @@ app.get("/groupprogress", function(req, res){
 app.get("/reward/deposit", function(req, res){
     res.render("Reward/deposit.ejs");
 });
+=======
+//Set Up the Routes
+app.use(indexRoutes);
+app.use(groupsRoutes);
+app.use(rewardRoutes);
+>>>>>>> ecb2419cbcb8eff5e858d1243b91d1e9537e3b75
 
 app.listen(process.env.PORT, process.env.IP, function(){
    console.log("The Server Has Started!");

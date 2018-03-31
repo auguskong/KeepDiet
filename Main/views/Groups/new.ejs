@@ -1,132 +1,38 @@
-<!--<div class="container">-->
-<!--    <div class="row">-->
-<!--        <h1 style="text-align: center">Create a New Campground</h1>-->
-<!--        <div style="width: 30%; margin: 25px auto;">-->
-<!--            <form action="/campgrounds" method="POST">-->
-<!--                <div class="form-group">-->
-<!--                    <input class="form-control" type="text" name="name" placeholder="Group Name">-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <input class="form-control" type="text" name="target" placeholder="Group Target">-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <input class="form-control" type="text" name="start" placeholder="Start Date">-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <input class="form-control" type="text" name="end" placeholder="End Date">-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <input class="form-control" type="text" name="max" placeholder="Maximum Group Member">-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <button class="btn btn-lg btn-primary btn-block">Start your Group!</button>-->
-<!--                </div>-->
-<!--            </form>-->
-<!--            <a href="/groups">Go Back</a>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>KeepDiet</title>
-        <!-- Bootstrap CSS CDN -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <!-- Our Custom CSS -->
-        <link rel="stylesheet" href="/partials/style.css">
-        <!-- Scrollbar Custom CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-    </head>
-    <body>
-        <div class="wrapper">
-            <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3>KeepDiet</h3>
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center">Create a New Campground</h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/groups" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="name" placeholder="Group Name">
                 </div>
-                <ul class="list-unstyled components">
-                    <p>Dummy Heading</p>
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    <li class="active">
-                        <a href="/groups">Groups</a>
-                    </li>
-                    <li>
-                        <a href="/reward" data-toggle="collapse" aria-expanded="false">Reward</a>
-                        <ul class="collapse list-unstyled" id="rewardSubmenu">
-                            <li><a href="/reward">Home</a></li>
-                            <li><a href="/reportprogress">Report Progress</a></li>
-                            <li><a href="/groupprogress">Group Progress</a></li>
-                            <li><a href="/deposit">Deposits</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-            <div id="content">
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="loginBar">
-                            <ul class="nav navbar-nav navbar-right">
-                                <% if(!currentUser){ %>
-                                <li><a href="/login">Login</a></li>
-                                <li><a href="/register">Sign Up</a></li>
-                                <% } else { %>
-                                <li><a href="#">Signed As <%= currentUser.username %></a></li>
-                                <li><a href="/logout">Logout</a></li>
-                                <% } %>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <h2 style="text-align: center">Create a New Campground</h2>
-                <div style="width: 30%; margin: 25px auto;">
-                    <form action="/campgrounds" method="POST">
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="name" placeholder="Group Name">
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="target" placeholder="Group Target">
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="start" placeholder="Start Date">
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="end" placeholder="End Date">
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="max" placeholder="Maximum Group Member">
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-lg btn-primary btn-block">Start your Group!</button>
-                        </div>
-                    </form>
-                    <a href="/groups">Go Back</a>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="image" placeholder="image url">
                 </div>
-            </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="desc" placeholder="Description of the Group">
+                </div>
+                <!--<div class="form-group">-->
+                <!--    <input class="form-control" type="text" name="name" placeholder="Group Target">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                <!--    <input class="form-control" type="text" name="name" placeholder="Start Date">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                <!--    <input class="form-control" type="text" name="name" placeholder="End Date">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                <!--    <input class="form-control" type="text" name="name" placeholder="Maximum Group Member">-->
+                <!--</div>-->
+                
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit</button>
+                </div>
+            </form>
+            <a href="/groups">Go Back</a>
         </div>
-        <!-- jQuery CDN -->
-        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-        <!-- Bootstrap Js CDN -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <!-- jQuery Custom Scroller CDN -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    </div>
+</div>
+<% include ../partials/footer %>
 
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("#sidebar").mCustomScrollbar({
-                    theme: "minimal"
-                });
-
-                $('#sidebarCollapse').on('click', function () {
-                    $('#sidebar, #content').toggleClass('active');
-                    $('.collapse.in').toggleClass('in');
-                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-                });
-            });
-        </script>        
-    </body>
-</html>

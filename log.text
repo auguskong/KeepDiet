@@ -7,3 +7,6 @@ debug: do not define the show route in app.js
 error3: Failed to lookup view "show" in views directory
 
 error4: Cast to ObjectId failed for value "todos.css" at path "_id" for model "Group"
+debug: add the '/' before the "todos.css" in the header file, this will make the app to 
+look for the file at the project root(to which `views` and `public` folder are also served)
+>>>>>>> 132714d7bb4625abaf35052009f9c3bdbaa59613

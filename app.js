@@ -67,14 +67,13 @@ app.get("/groups", function(req, res){
 
 app.post("/campgrounds", function(req, res){
     // get data from form and add to groups array
-
     var name = req.body.name;
 
     var image = req.body.image;
     var desc = req.body.desc;
     var newGroup = {name: name, image: image, description: desc}
-
-
+>>>>>>> 132714d7bb4625abaf35052009f9c3bdbaa59613:app.js
+    //Create a new group and save to DB
     Group.create(newGroup, function(err, newlyCreated){
         if(err){
             console.log(err);
@@ -84,7 +83,17 @@ app.post("/campgrounds", function(req, res){
     });
 });
 
-// Comment this out to "Create a new group", then uncomment this out to be able to view the Group info
+app.get("/groups/new", function(req, res){
+   res.render("Groups/new.ejs"); 
+});
+
+
+
+=======
+app.get("/diary/new", function(req, res){
+    res.render("Diary/newDiary.ejs");
+});
+
 //Show more info about one group
 app.get("/groups/:id", function(req, res){
     //find the group with provided ID
@@ -92,16 +101,13 @@ app.get("/groups/:id", function(req, res){
         if(err){
             console.log(err);
         } else {
-            console.log(foundGroup);
+            console.log(foundGroup)
             res.render("Groups/show", {group: foundGroup});
         }
     });
-});
+})
 
-app.get("/groups/new", function(req, res){
-   res.render("Groups/new.ejs"); 
-});
-
+>>>>>>> 132714d7bb4625abaf35052009f9c3bdbaa59613:app.js
 //===========
 //AUTH ROUTES
 //===========

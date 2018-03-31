@@ -128,41 +128,14 @@ app.get("/logout", function(req, res){
 
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
-        return next();
+        return next(); //advance to the next()
     }
     res.redirect("/login");
 }
 
-app.get("/reward", function(req, res){
+app.get("/reward", isLoggedIn, function(req, res){
     res.render("Reward/reward.ejs");
 });
-
-// //INDEX - show all groups
-// app.get("/groups", function(req, res){
-//     //GET all groups from DB
-//     Group.find({}, function(err, groups){
-//         if(err){
-//             console.log(err);
-//         } else {
-//             res.render("Groups/groups", {groups: groups, currentUser: req.user});
-//         }
-//     })
-// });
-
-// app.post("/groups", function(req, res){
-//     // get data from form and add to groups array
-//     var name = req.body.name;
-//     var image = req.body.image;
-//     var newGroup = {name: name, image: image}
-//     //Create a new group and save to DB
-//     Group.create(newGroup, function(err, newlyCreated){
-//         if(err){
-//             console.log(err);
-//         } else {
-//             res.redirect("/groups");
-//         }
-//     });
-// });
 
 // show all diaries
 app.get("/reportprogress", function(req, res){
@@ -213,7 +186,6 @@ app.put("/reportprogress/edit", function(req, res) {
    var snack = req.body.snack;
    var exercise = req.body.exercise;
    var updateDiary = {date: date, checkin: checkin, checkout: checkout, breakfast: breakfast, lunch: lunch, dinner: dinner, snack: snack, exercise: exercise}
-   
 });
 
 app.get("/reportprogress/edit", function(req, res){

@@ -33,13 +33,6 @@ app.use(function(req, res, next){
     next();
 })
 
-// var groups = [
-//         {name: "Hiking Groups", image: "https://static1.squarespace.com/static/53bed66ee4b0fc5deee88551/t/56b7c428555986e5db03075a/1454883907809/trail-hiking-mountain-group"},
-//         {name: "Cycling Groups", image: "http://www.lsu.edu/highlights/2010/07/images/CyclingClub2.jpg"},
-//         {name: "Swimming Groups", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8tTH5bJQYWSqgoClrXIH-8QRuBbswnOH4lycbLbMmaynoHZY3GA"},
-//         {name: "Boxing Groups", image: "http://harlemboxing.nyc/wp-content/uploads/2014/07/Group_sm1.jpeg"},
-//         {name: "Basketball Groups", image: "http://www.loganleisurecentres.com.au/__data/assets/image/0011/439967/Jazz-Team-Training-8-16-Cornubia-Park.jpg"}
-// ];
     
 app.get("/", function(req, res){
     res.render("Landing/landing");
@@ -48,10 +41,6 @@ app.get("/", function(req, res){
 app.get("/diary", function(req, res){ 
     res.render("Diary/diary"); 
 });
-
-exports.index= function(req, res) {
-    res.render("Diary/diary", {moment: moment});
-}
 
 //INDEX - show all groups
 app.get("/groups", function(req, res){
@@ -84,7 +73,10 @@ app.post("/campgrounds", function(req, res){
     });
 });
 
-// Comment this out to "Create a new group", then uncomment this out to be able to view the Group info
+app.get("/groups/new", function(req, res){
+   res.render("Groups/new.ejs"); 
+});
+
 //Show more info about one group
 app.get("/groups/:id", function(req, res){
     //find the group with provided ID
@@ -98,9 +90,7 @@ app.get("/groups/:id", function(req, res){
     });
 });
 
-app.get("/groups/new", function(req, res){
-   res.render("Groups/new.ejs"); 
-});
+
 
 //===========
 //AUTH ROUTES

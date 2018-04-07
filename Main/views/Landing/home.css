@@ -1,0 +1,29 @@
+/* ---------------------------------------------------
+    Main Page
+----------------------------------------------------- */
+.image {
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+h2 {
+    position: absolute;
+    bottom: 0;
+    text-align: left;
+    margin-left: 10%;
+    width: 100%;
+}
+
+h2 span {
+    color: white;
+    font: bold 24px/45px Helvetica, Sans-Serif;
+    letter-spacing: -1px;
+    background: rgb(0, 0, 0,);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+}
+
+h2 span.spacer {
+    padding:0 5px;
+}

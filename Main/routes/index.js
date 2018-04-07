@@ -13,6 +13,10 @@ router.get("/", function(req, res){
     res.render("Landing/landing");
 });
 
+router.get("/about", function(req, res) {
+    res.render("Landing/about");
+});
+
 //===========
 //AUTH ROUTES
 //===========

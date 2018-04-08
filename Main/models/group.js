@@ -10,6 +10,12 @@ var groupSchema = new mongoose.Schema({
         },
         username: String
     },
+    members: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Member"
+        }
+    ],
     target: String,
     start: String,
     end: String,

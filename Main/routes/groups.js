@@ -1,6 +1,7 @@
 var express = require("express"),
     router  = express.Router(),
-    Group   = require("../models/group");
+    Group   = require("../models/group"),
+    Member  = require("../models/member");
 
 //INDEX - show all groups
 router.get("/groups", isLoggedIn, function(req, res){
@@ -37,10 +38,17 @@ router.post("/groups", isLoggedIn, function(req, res){
     });
 });
 
+//Add a new member to the group
+
+
 //EDIT GROUP ROUTE
 router.get("/groups/:id/edit", checkGroupOwnership, function(req, res){
     Group.findById(req.params.id, function(err, foundGroup){
-        res.render("Groups/edit", {group: foundGroup});
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("Groups/edit", {group: foundGroup});
+        }
     });
 });
 
@@ -54,7 +62,6 @@ router.put("/groups/:id", checkGroupOwnership, function(req, res){
             res.redirect("/groups/" + req.params.id);
         }
     })
-    //redirect somewhere(show page)
 });
 
 //DESTROY GROUP ROUTE
@@ -70,21 +77,59 @@ router.delete("/groups/:id", checkGroupOwnership, function(req, res){
 
 
 router.get("/groups/new", function(req, res){
-   res.render("Groups/new.ejs"); 
+   res.render("Groups/new"); 
 });
 
 //Show more info about one group
 router.get("/groups/:id", function(req, res){
     //find the group with provided ID
-    Group.findById(req.params.id).exec(function(err, foundGroup){
+    Group.findById(req.params.id).populate("members").exec(function(err, foundGroup){
         if(err){
             console.log(err);
         } else {
+            console.log(foundGroup);
             res.render("Groups/show", {group: foundGroup});
         }
     });
 });
 
+// =================
+// Member Routes
+// =================
+
+router.get("/groups/:id/members/new", function(req, res){
+    //find group by id
+    Group.findById(req.params.id, function(err, group){
+        if(err){
+            console.log(err);
+        } else {
+            res.render("Members/new", {group: group});
+        }
+    })
+})
+
+router.post("/groups/:id/members", function(req, res){
+    //lookup group using ID
+    Group.findById(req.params.id, function(err, group){
+        if(err){
+            console.log(err);
+            res.redirect("/groups");
+        } else {
+            Member.create(req.body.member, function(err, member){
+                if(err){
+                    console.log(err);
+                } else {
+                    group.members.push(member);
+                    group.save();
+                    res.redirect("/groups/" + group._id);
+                }
+            })
+        }
+    });
+    //create the new member
+    //connect the member to group
+    //redirect group show page
+})
 
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){

@@ -19,9 +19,9 @@ app.set("view engine", "ejs");
 
 //PASSPORT CONFIGURATION
 app.use(require("express-session")({
-   secret: "Once again Rusty wins cutest dog!",
-   resave: false,
-   saveUninitialized: false
+  secret: "test",
+  resave: false,
+  saveUninitialized: false
 }));
 
 app.use(passport.initialize());

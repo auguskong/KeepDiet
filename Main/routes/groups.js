@@ -67,6 +67,18 @@ router.put("/groups/:id", function(req, res){
     //redirect somewhere(show page)
 });
 
+//DESTROY GROUP ROUTE
+router.delete("/groups/:id", function(req, res){
+    Group.findByIdAndRemove(req.params.id, function(err){
+        if(err) {
+            res.redirect("/groups");
+        } else {
+            res.redirect("/groups/");
+        }
+    });
+});
+
+
 router.get("/groups/new", function(req, res){
    res.render("Groups/new.ejs"); 
 });
@@ -78,7 +90,6 @@ router.get("/groups/:id", function(req, res){
         if(err){
             console.log(err);
         } else {
-            console.log(foundGroup);
             res.render("Groups/show", {group: foundGroup});
         }
     });

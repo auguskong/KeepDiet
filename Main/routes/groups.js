@@ -44,13 +44,22 @@ router.post("/groups", isLoggedIn, function(req, res){
 
 //EDIT GROUP ROUTE
 router.get("/groups/:id/edit", function(req, res){
-    Group.findById(req.params.id, function(err, foundGroup){
-        if(err) {
-            res.redirect("/groups");
-        } else {
-            res.render("Groups/edit", {group: foundGroup});
-        }
-    });
+    if(req.isAuthenticated()) {
+        Group.findById(req.params.id, function(err, foundGroup){
+            if(err) {
+                res.redirect("/groups");
+            } else {
+                if (foundGroup.author.id.equals(req.user._id)) {
+                    res.render("Groups/edit", {group: foundGroup});
+                } else {
+                    res.send("you do not have permission")
+                }
+            }
+        });
+    } else {
+        res.send("You need to log in");
+    }
+    
     
 });
 

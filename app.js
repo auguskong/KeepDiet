@@ -4,8 +4,7 @@ var express         = require("express"),
     mongoose        = require("mongoose"),
     passport        = require("passport"),
     LocalStrategy   = require("passport-local"),
-    User            = require("./Main/models/user.js"),
-    $               = require('jquery');
+    User            = require("./Main/models/user.js");
 
 var groupsRoutes    = require("./Main/routes/groups.js"),
     indexRoutes     = require("./Main/routes/index.js"),

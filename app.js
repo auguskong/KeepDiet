@@ -4,13 +4,13 @@ var express         = require("express"),
     mongoose        = require("mongoose"),
     passport        = require("passport"),
     LocalStrategy   = require("passport-local"),
-    User            = require("./models/user"),
+    User            = require("./models/user.js"),
     methodOverride   = require("method-override"),
     $               = require('jquery');
 
-var groupsRoutes    = require("./routes/groups"),
-    indexRoutes     = require("./routes/index"),
-    rewardRoutes    = require("./routes/reward");
+var groupsRoutes    = require("./routes/groups.js"),
+    indexRoutes     = require("./routes/index.js"),
+    rewardRoutes    = require("./routes/reward.js");
     
 // mongoose.connect("mongodb://localhost/keep_diet_2");
 mongoose.connect("mongodb://augus:123456@ds151048.mlab.com:51048/keepdiet");

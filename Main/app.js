@@ -4,18 +4,18 @@ var express         = require("express"),
     mongoose        = require("mongoose"),
     passport        = require("passport"),
     LocalStrategy   = require("passport-local"),
-    User            = require("./Main/models/user.js");
+    User            = require("./models/user.js");
 
-var groupsRoutes    = require("./Main/routes/groups.js"),
-    indexRoutes     = require("./Main/routes/index.js"),
-    rewardRoutes    = require("./Main/routes/reward.js");
+var groupsRoutes    = require("./routes/groups.js"),
+    indexRoutes     = require("./routes/index.js"),
+    rewardRoutes    = require("./routes/reward.js");
     
 // mongoose.connect("mongodb://localhost/keep_diet_2");
 mongoose.connect("mongodb://augus:123456@ds151048.mlab.com:51048/keepdiet");
 //dbuser: augus dbpassword: 123456 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/views"));
-app.use(methodOverride("_method"));
+
 app.set("view engine", "ejs");
 
 //PASSPORT CONFIGURATION

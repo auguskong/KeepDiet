@@ -1,0 +1,35 @@
+<% include ../partials/header %>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+        
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>   
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Description</h1>
+            <p>  
+            <strong>KeepDiet</strong> is a service that keeps up the motivation 
+            and competition throughout the diet by enabling users to 
+            find groups of people nearby desiring to meet similar goals, 
+            to help one another by tracking their progress through diaries 
+            and to stay committed with the Reward System.</p>
+        </div>
+    </header>
+    
+    <h2>Group Member</h2>
+    <div class="mx-auto" style="width: 200px;">
+    <p>Junlin Liu  </br><b class="keywords">Email</b>  junlinliu@gatech.edu</p>
+    <p>Ik Tae Kim </br><b class="keywords">Email</b>  ikim75@gatech.edu</p>
+    <p>Wanyang Guo </br><b class="keywords">Email</b>  wyguo@gatech.edu</p>
+    <p>Xiangyu Kong </br><b class="keywords">Email</b>  xkong36@gatech.edu</p>
+    <p>Haoting </br><b class="keywords">Email</b>  haotingli@gatech.edu</p>
+    </div>
+<% include ../partials/footer %>

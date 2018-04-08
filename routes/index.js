@@ -13,6 +13,10 @@ router.get("/", function(req, res){
     res.render("Landing/landing");
 });
 
+router.get("/contact", function(req, res){
+    res.render("Landing/contact");
+});
+
 router.get("/about", function(req, res) {
     res.render("Landing/about");
 });
@@ -20,8 +24,6 @@ router.get("/about", function(req, res) {
 //===========
 //AUTH ROUTES
 //===========
-
-
 
 // show register form 
 router.get("/register", function(req, res){

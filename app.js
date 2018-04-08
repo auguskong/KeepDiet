@@ -18,11 +18,13 @@ app.use(express.static(__dirname + "/views"));
 app.set("view engine", "ejs");
 
 //PASSPORT CONFIGURATION
+
 app.use(require("express-session")({
   secret: "test",
   resave: false,
   saveUninitialized: false
 }));
+
 
 app.use(passport.initialize());
 app.use(passport.session());

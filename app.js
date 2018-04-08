@@ -5,7 +5,6 @@ var express         = require("express"),
     passport        = require("passport"),
     LocalStrategy   = require("passport-local"),
     User            = require("./Main/models/user.js"),
-    methodOverride   = require("method-override"),
     $               = require('jquery');
 
 var groupsRoutes    = require("./Main/routes/groups.js"),

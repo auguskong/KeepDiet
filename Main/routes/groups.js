@@ -12,11 +12,6 @@ router.get("/groups", isLoggedIn, function(req, res){
             res.render("Groups/groups", {groups: groups, currentUser: req.user});
         }
     });
-        //does user own the campground?
-        //otherwise, redirect
-    //if not, redirect
-    //GET all groups from DB
-   
 });
 
 //Add a new group
@@ -43,28 +38,14 @@ router.post("/groups", isLoggedIn, function(req, res){
 });
 
 //EDIT GROUP ROUTE
-router.get("/groups/:id/edit", function(req, res){
-    if(req.isAuthenticated()) {
-        Group.findById(req.params.id, function(err, foundGroup){
-            if(err) {
-                res.redirect("/groups");
-            } else {
-                if (foundGroup.author.id.equals(req.user._id)) {
-                    res.render("Groups/edit", {group: foundGroup});
-                } else {
-                    res.send("you do not have permission")
-                }
-            }
-        });
-    } else {
-        res.send("You need to log in");
-    }
-    
-    
+router.get("/groups/:id/edit", checkGroupOwnership, function(req, res){
+    Group.findById(req.params.id, function(err, foundGroup){
+        res.render("Groups/edit", {group: foundGroup});
+    });
 });
 
 //UPDATE GROUP ROUTE
-router.put("/groups/:id", function(req, res){
+router.put("/groups/:id", checkGroupOwnership, function(req, res){
     //find and update the correct group
     Group.findByIdAndUpdate(req.params.id, req.body.group, function(err, updatedGroup){
         if(err) {
@@ -77,7 +58,7 @@ router.put("/groups/:id", function(req, res){
 });
 
 //DESTROY GROUP ROUTE
-router.delete("/groups/:id", function(req, res){
+router.delete("/groups/:id", checkGroupOwnership, function(req, res){
     Group.findByIdAndRemove(req.params.id, function(err){
         if(err) {
             res.redirect("/groups");
@@ -112,5 +93,22 @@ function isLoggedIn(req, res, next){
     res.redirect("/login");
 }
 
+function checkGroupOwnership(req, res, next) {
+    if(req.isAuthenticated()) {
+        Group.findById(req.params.id, function(err, foundGroup){
+            if(err) {
+                res.redirect("back");
+            } else {
+                if (foundGroup.author.id.equals(req.user._id)) {
+                    next();
+                } else {
+                    res.redirect("back");
+                }
+            }
+        });
+    } else {
+        res.redirect("back");
+    }
+}
 
 module.exports = router;

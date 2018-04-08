@@ -20,10 +20,12 @@
     <p>Group's start date: <%= group.start %></p>
     <p>Group's end date: <%= group.end %></p>
     <p>Group's max number of members: <%= group.max %></p>
-    <p>Submitted By <%= group.author.username %></p>
-    <a href="/groups/<%= group._id %>/edit" class="btn btn-warning btn-small">Edit</a>
-    <form id="delete-form" action="/groups/<%= group._id %>?_method=DELETE" method="POST">
-        <button class="btn btn-danger">Delete</button>    
-    </form>
+    <p>Created By <%= group.author.username %></p>
+    <% if(currentUser && group.author.id.equals(currentUser._id)){ %>
+        <a href="/groups/<%= group._id %>/edit" class="btn btn-warning btn-small">Edit</a>
+        <form id="delete-form" action="/groups/<%= group._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-danger">Delete</button>    
+        </form>
+    <% } %>
     
 <% include ../partials/footer %>

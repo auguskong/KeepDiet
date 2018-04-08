@@ -1,0 +1,47 @@
+<% include ../partials/header %>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#sidebar").mCustomScrollbar({
+            theme: "minimal"
+        });
+
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar, #content').toggleClass('active');
+            $('.collapse.in').toggleClass('in');
+            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
+    });
+</script>  
+
+
+    <h2 style="text-align: center">Edit <%= group.name%></h2>
+    <div style="width: 30%; margin: 25px auto;">
+        <form action="/groups/<%= group._id %>/edit?_method=PUT" method="POST">
+            <div class="form-group">
+                <input class="form-control" type="text" name="name" placeholder="Group Name">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="image" placeholder="image url">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="target" placeholder="Group Target">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="start" placeholder="Start Date">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="end" placeholder="End Date">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="max" placeholder="Maximum Group Member">
+            </div>
+            
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block">Save</button>
+            </div>
+        </form>
+        <a href="/groups">Go Back</a>
+    </div>
+
+<%include ../partials/footer %>

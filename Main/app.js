@@ -5,6 +5,7 @@ var express         = require("express"),
     passport        = require("passport"),
     LocalStrategy   = require("passport-local"),
     User            = require("./models/user"),
+    methodOverride   = require("method-override"),
     $               = require('jquery');
 
 var groupsRoutes    = require("./routes/groups"),
@@ -14,6 +15,7 @@ var groupsRoutes    = require("./routes/groups"),
 mongoose.connect("mongodb://localhost/keep_diet_2");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/views"));
+app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 
 //PASSPORT CONFIGURATION

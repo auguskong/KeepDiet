@@ -4,7 +4,7 @@ var express = require("express"),
 
 //INDEX - show all groups
 router.get("/groups", isLoggedIn, function(req, res){
-    //GET all groups from DB
+    //is user logged in?
     Group.find({}, function(err, groups){
         if(err){
             console.log(err);
@@ -12,6 +12,11 @@ router.get("/groups", isLoggedIn, function(req, res){
             res.render("Groups/groups", {groups: groups, currentUser: req.user});
         }
     });
+        //does user own the campground?
+        //otherwise, redirect
+    //if not, redirect
+    //GET all groups from DB
+   
 });
 
 //Add a new group
@@ -22,15 +27,33 @@ router.post("/groups", isLoggedIn, function(req, res){
     var start = req.body.start;
     var end = req.body.end;
     var max = req.body.max;
-    var newGroup = {name: name, image: image, target: target, start: start, end: end, max: max}
+    var author = {
+        id: req.user._id,
+        username: req.user.username
+    }
+    var newGroup = {name: name, author: author, image: image, target: target, start: start, end: end, max: max}
     Group.create(newGroup, function(err, newlyCreated){
         if(err){
             console.log(err);
         } else {
+            console.log(newlyCreated);
             res.redirect("/groups");
         }
     });
 });
+
+//EDIT CAMPGROUND ROUTE
+router.get("/groups/:id/edit", function(req, res){
+    Group.findById(req.params.id, function(err, foundGroup){
+        if(err) {
+            res.redirect("/groups");
+        } else {
+            res.render("Groups/edit", {group: foundGroup});
+        }
+    });
+    
+});
+
 
 router.get("/groups/new", function(req, res){
    res.render("Groups/new.ejs"); 

@@ -42,7 +42,7 @@ router.post("/groups", isLoggedIn, function(req, res){
     });
 });
 
-//EDIT CAMPGROUND ROUTE
+//EDIT GROUP ROUTE
 router.get("/groups/:id/edit", function(req, res){
     Group.findById(req.params.id, function(err, foundGroup){
         if(err) {
@@ -54,6 +54,18 @@ router.get("/groups/:id/edit", function(req, res){
     
 });
 
+//UPDATE GROUP ROUTE
+router.put("/groups/:id", function(req, res){
+    //find and update the correct group
+    Group.findByIdAndUpdate(req.params.id, req.body.group, function(err, updatedGroup){
+        if(err) {
+            res.redirect("/groups");
+        } else {
+            res.redirect("/groups/" + req.params.id);
+        }
+    })
+    //redirect somewhere(show page)
+});
 
 router.get("/groups/new", function(req, res){
    res.render("Groups/new.ejs"); 

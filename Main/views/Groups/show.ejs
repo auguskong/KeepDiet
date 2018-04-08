@@ -21,4 +21,5 @@
     <p><%= group.end %></p>
     <p><%= group.max %></p>
     <p>Submitted By <%= group.author.username %></p>
+    <a href="/groups/<%= group._id %>/edit" class="btn btn-warning btn-small">Edit</a>
 <% include ../partials/footer %>

@@ -12,7 +12,9 @@ var groupsRoutes    = require("./routes/groups"),
     indexRoutes     = require("./routes/index"),
     rewardRoutes    = require("./routes/reward");
     
-mongoose.connect("mongodb://localhost/keep_diet_2");
+// mongoose.connect("mongodb://localhost/keep_diet_2");
+mongoose.connect("mongodb://augus:123456@ds151048.mlab.com:51048/keepdiet");
+//dbuser: augus dbpassword: 123456 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/views"));
 app.use(methodOverride("_method"));

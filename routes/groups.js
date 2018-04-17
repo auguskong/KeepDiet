@@ -6,7 +6,8 @@ var express = require("express"),
 //INDEX - show all groups
 router.get("/groups", isLoggedIn, function(req, res){
     //is user logged in?
-    Group.find().where('author.id').equals(req.user.id).exec(function(err, groups){
+    //Group.find().where('author.id').equals(req.user.id).exec(function(err, groups)
+    Group.find({},function(err, groups){
         if(err){
             console.log(err);
         } else {
